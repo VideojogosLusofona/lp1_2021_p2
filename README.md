@@ -52,7 +52,7 @@ número que saiu nos dados e o valor exato necessário.
   * Ex: Falta duas casas para o João ganhar. Lançou 5 no dado, este irá retroceder 
   3 (5-2) casas contando a partir da ultima casa do tabuleiro. 
 
-# Tipos de Casas
+## Tipos de Casas
 
 Existem 8 tipos de casas differentes aos quais têm heuristicas especificas de como 
 podem ser posicionadas no tabuleiro (i.e. seguir estas regras para a criação do 
@@ -78,15 +78,13 @@ de usá-la a qualquer altura do jogo. Só pode existir 2 casas deste tipo.
 de substituir o valor de um dado por um escolhido pelo jogador (valores de 1 a 6). 
 Só pode existir duas casas deste tipo no tabuleiro. 
 
-# Visualização 
+## Visualização 
 
 Toda a parte visual é feita na consola, e a cada turno é necessário mostrar o estado 
 do tabuleiro aos jogadores, mostrando a posição corrente de todos os jogadores, as 
 casas especiais e os dados extra e cheat-die que o jogador tenha.
 
-
-
-## Funcionamento da Aplicação
+# Funcionamento da Aplicação
 
 O funcionamento exato da aplicação é da responsabilidade de cada grupo. No
 entanto, quando a aplicação começa, **deve ser claro como cada jogador joga**,
@@ -185,7 +183,7 @@ realização do projeto, também entre 0 e 1. Isto significa que se os alunos
 ignorarem completamente um dos objetivos, não tenham feito nada no projeto ou
 não comparerecem na discussão, a nota final será zero.
 
-## Entrega
+# Entrega
 
 O projeto deve ser entregue por **grupos de 2 a 3 alunos** via Moodle até às
 23h de 16 de maio de 2021. Um (e apenas um) dos elementos do grupo deve ser
@@ -207,7 +205,7 @@ submeter um ficheiro `zip` com a solução completa, nomeadamente:
 Não serão avaliados projetos sem estes elementos e que não sejam entregues
 através do Moodle.
 
-## Honestidade académica
+# Honestidade académica
 
 Nesta disciplina, espera-se que cada aluno siga os mais altos padrões de
 honestidade académica. Isto significa que cada ideia que não seja do
@@ -238,19 +236,6 @@ temporária ou definitiva da ULHT.
 
 *Texto adaptado da disciplina de [Algoritmos e
 Estruturas de Dados][aed] do [Instituto Superior Técnico][ist]*
-
-## Referências
-
-* \[1\] **Royal Game of Ur**. Retrieved from
-  <https://ludii.games/details.php?keyword=Royal%20Game%20of%20Ur>.
-* \[2\] **Royal Game of Ur**. Retrieved from
-  <https://en.wikipedia.org/wiki/Royal_Game_of_Ur>.
-* \[3\] Whitaker, R. B. (2016). **The C# Player's Guide** (3rd Edition).
-  Starbound Software.
-* \[4\] Albahari, J. (2017). **C# 7.0 in a Nutshell**. O’Reilly Media.
-* \[5\] Dorsey, T. (2017). **Doing Visual Studio and .NET Code Documentation
-  Right**. Visual Studio Magazine. Retrieved from
-  <https://visualstudiomagazine.com/articles/2017/02/21/vs-dotnet-code-documentation-tools-roundup.aspx>.
 
 ## Licenças
 
