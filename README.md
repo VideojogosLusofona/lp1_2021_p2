@@ -1,14 +1,89 @@
 # Projeto 1 de Linguagens de Programação | 2021/2022
+# Projeto 1 de Linguagens de Programação | 2021/2022
 ## Introdução
 
-Os grupos devem implementar o jogo **Royal Game of Ur** na forma de uma aplicação de
-consola .NET Core. O jogo deve ser PvP (_Player vs Player_), sem qualquer
-tipo de inteligência artificial.
+Os grupos devem implementar o jogo **Snakes & Ladders** na forma de uma 
+aplicação de consola .NET Core. O jogo deve ser PvP (_Player vs Player_), sem 
+qualquer tipo de inteligência artificial.
 
 ## Regras do Jogo
 
+O jogo **Snakes & Ladders** é um jogo simples que depende exclusivamente dos 
+dados. O jogo consiste numa "corrida" onde o objetivo do jogo é ser o primeiro 
+a chegar à ultima casa do tabuleiro. A implementação será uma variação deste
+jogo.
 
-## Experimenta o Jogo!
+![Possível tabuleiro inicial](img/SnakesBoard.png "Tabuleiro de Jogo")
+
+O tabuleiro consiste numa sequencia de 100 "casas" no qual as casas podem ter 
+vários tipos, que afecta a posição do jogador no tabuleiro (ver secção *Tipo Casas*). 
+O movimento consiste avançar o "pião" - que representa cada jogador - o numero de 
+casas equivalente ao que foi obtido no lançamento dos dados. 
+
+![Como se avança no tabuleiro](img/SnakesMovement.png "Tabuleiro de Jogo")
+
+### Mecânicas do Tabuleiro
+
+Nesta implementação do **Snakes and Ladders** o jogo irá começar sempre com um 
+tabuleiro aleatório onde o posicionamento dos differentes tipos de casas irá seguir 
+uma heurística específica definido em baixo. 
+
+O tabuleiro é uma matriz de 10x10, i.e. 10 casas por linha e coluna, onde cada jogador 
+percorre uma linha até ao fim, para chegar a coluna seguinte (ou seja uma progressão 
+horizontal). 
+
+### Regras de Jogo
+
+O jogo é jogado com 2 a 4 jogadores. 
+
+A cada turno um jogador lança um dado de 6 lados, e avança o número de casas 
+equivalente ao valor obtido. Se o jogador cai numa **casa especial**, a regra associada 
+a essa casa é ativada immediatamente. Após o efeito da casa especial ter sido aplicada, 
+a vez de jogar é passada para o jogador seguinte.
+
+Casos Especiais:
+
+* Se o jogador calha numa casa onde já existir outro jogador, o oponente é forçado a 
+retroceder uma casa. Caso essa casa é especial, aplica-se na mesma a regra dessa casa 
+de forma normal. 
+
+* Caso o jogador ultrapassar o número necessário para chegar a ultima casa (e ganhar 
+o jogo), este terá que retroceder o número de casas equivalente a diferença entre o 
+número que saiu nos dados e o valor exato necessário. 
+  * Ex: Falta duas casas para o João ganhar. Lançou 5 no dado, este irá retroceder 
+  3 (5-2) casas contando a partir da ultima casa do tabuleiro. 
+
+# Tipos de Casas
+
+Existem 8 tipos de casas differentes aos quais têm heuristicas especificas de como 
+podem ser posicionadas no tabuleiro (i.e. seguir estas regras para a criação do 
+tabuleiro). 
+
+* **Normal** - Casa normal sem regras especiais.
+* **Snakes** - Esta casa faz com que o jogador retroceda immediatamente para uma casa 
+que esteja no minímo a uma linha abaixo da casa corrente. Só pode existir no máximo 
+10 casas deste tipo e no minimo 5 num tabuleiro.
+* **Ladders** - Esta casa faz com que o jogador avance immediatemente para uma casa 
+que esteja no minímo a uma linha acima da casa corrente. Só pode existir no máximo 
+10 casas deste tipo e no minimo 5 num tabuleiro.
+* **Cobra** - Esta casa obriga o jogador a voltar ao início do tabuleiro. Só pode 
+existir uma casa deste tipo e este não pode estar nas duas primeiras linhas inicias. 
+* **Boost** - Esta casa obriga o jogador a avançar duas casas. Só pode existir 5 
+casas deste tipo no tabuleiro, e esta não pode existir na ultima linha.
+* **U-Turn** - Esta casa obriga o jogador a retroceder duas casas. Só pode existir 
+5 casas deste tipo no tabuleiro, e esta não pode existir na primeira linha. 
+* **Extra Die** - Esta casa oferece um dado extra ao jogador, dado a possibilidade 
+de usá-la a qualquer altura do jogo. Só pode existir 2 casas deste tipo. 
+**Importante**: Um jogador nunca pode ter mais do que 1 dado extra de reserva. 
+* **Cheat Die** - Esta casa oferece um dado "especial" oferencendo a possibilidade 
+de substituir o valor de um dado por um escolhido pelo jogador (valores de 1 a 6). 
+Só pode existir duas casas deste tipo no tabuleiro. 
+
+# Visualização 
+
+Toda a parte visual é feita na consola, e a cada turno é necessário mostrar o estado 
+do tabuleiro aos jogadores, mostrando a posição corrente de todos os jogadores, as 
+casas especiais e os dados extra e cheat-die que o jogador tenha.
 
 
 
