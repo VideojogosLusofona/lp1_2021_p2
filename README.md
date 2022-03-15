@@ -1,5 +1,4 @@
 # Projeto 1 de Linguagens de Programação | 2021/2022
-# Projeto 1 de Linguagens de Programação | 2021/2022
 ## Introdução
 
 Os grupos devem implementar o jogo **Snakes & Ladders** na forma de uma 
