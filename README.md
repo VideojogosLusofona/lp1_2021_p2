@@ -40,7 +40,7 @@ equivalente ao valor obtido. Se o jogador cai numa **casa especial**, a regra as
 a essa casa é ativada immediatamente. Após o efeito da casa especial ter sido aplicada, 
 a vez de jogar é passada para o jogador seguinte.
 
-Casos Especiais:
+### Casos Especiais:
 
 * Se o jogador calha numa casa onde já existir outro jogador, o oponente é forçado a 
 retroceder uma casa. Caso essa casa é especial, aplica-se na mesma a regra dessa casa 
