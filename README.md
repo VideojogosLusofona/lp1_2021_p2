@@ -15,8 +15,8 @@ jogo.
 
 ![Possível tabuleiro inicial](img/SnakesBoard.png "Tabuleiro de Jogo")
 
-O tabuleiro consiste numa sequencia de 100 "casas" de vários tipos, que podem
-afetar a posição do jogador no tabuleiro (ver secção [Tipos de
+**Nesta versão** o tabuleiro consiste numa sequencia de 25 "casas" de vários 
+tipos, que podem afetar a posição do jogador no tabuleiro (ver secção [Tipos de
 Casas](#tipos-de-casas)). O movimento consiste avançar o "pião" (que representa
 cada jogador) o número de casas equivalente ao que foi obtido no lançamento dos
 dados.
@@ -29,7 +29,7 @@ Nesta implementação do **Snakes and Ladders** o jogo irá começar sempre com 
 tabuleiro aleatório onde o posicionamento dos diferentes tipos de casas irá
 seguir uma heurística específica definido em baixo.
 
-O tabuleiro é uma matriz de 10x10, i.e. 10 casas por linha e coluna, onde cada
+O tabuleiro é uma matriz de 5x5 (i.e 5 casas por linha e coluna), onde cada
 jogador percorre uma linha até ao fim, para chegar a coluna seguinte (ou seja
 uma progressão horizontal).
 
@@ -63,22 +63,23 @@ tabuleiro).
 * **Normal** - Casa normal sem regras especiais.
 * **Snakes** - Esta casa faz com que o jogador retroceda immediatamente para uma casa
 que esteja no minímo a uma linha abaixo da casa corrente. Só pode existir no máximo
-10 casas deste tipo e no minimo 5 num tabuleiro.
+4 casas deste tipo e no minimo 2 num tabuleiro.
 * **Ladders** - Esta casa faz com que o jogador avance immediatemente para uma casa
 que esteja no minímo a uma linha acima da casa corrente. Só pode existir no máximo
-10 casas deste tipo e no minimo 5 num tabuleiro.
+4 casas deste tipo e no minimo 2 num tabuleiro.
 * **Cobra** - Esta casa obriga o jogador a voltar ao início do tabuleiro. Só pode
-existir uma casa deste tipo e este não pode estar nas duas primeiras linhas inicias.
-* **Boost** - Esta casa obriga o jogador a avançar duas casas. Só pode existir 5
-casas deste tipo no tabuleiro, e esta não pode existir na ultima linha.
+existir máximo 1 casa deste tipo e este não pode estar nas duas primeiras linhas inicias.
+* **Boost** - Esta casa obriga o jogador a avançar duas casas. Só pode existir máximo 
+2 casas deste tipo no tabuleiro, e esta não pode existir na ultima linha.
 * **U-Turn** - Esta casa obriga o jogador a retroceder duas casas. Só pode existir
-5 casas deste tipo no tabuleiro, e esta não pode existir na primeira linha.
+máximo 2 casas deste tipo no tabuleiro, e esta não pode existir na primeira linha.
 * **Extra Die** - Esta casa oferece um dado extra ao jogador, dado a possibilidade
-de usá-la a qualquer altura do jogo. Só pode existir 2 casas deste tipo.
+de usá-la a qualquer altura do jogo. Só pode existir máximo 1 casa deste tipo.
 **Importante**: Um jogador nunca pode ter mais do que 1 dado extra de reserva.
-* **Cheat Die** - Esta casa oferece um dado "especial" oferencendo a possibilidade
-de substituir o valor de um dado por um escolhido pelo jogador (valores de 1 a 6).
-Só pode existir duas casas deste tipo no tabuleiro.
+* **Cheat Die** - Esta casa oferece um dado "especial" dando a possibilidade de substituir 
+um valor de um dado por um escolhido pelo jogador (valores de 1 a 6). Só pode existir no 
+máximo 1 casa deste tipo no tabuleiro. **Importante**: O jogador perde imediatamente esta 
+opção depois de a utilizar. 
 
 ## Visualização
 
