@@ -60,7 +60,8 @@ ao jogador oponente.
 Existem 8 tipos de casas diferentes, as quais têm regras especificas de como
 podem ser colocadas no tabuleiro:
 
-* **Normal** - Casa normal sem regras especiais.
+* **Normal** - Casa normal sem regras especiais. A **primeira** e a **ultima** 
+  casa do tabuleiro têm que ser obrigatóriamente normais.
 * **Snakes** - Esta casa faz com que o jogador retroceda uma casa na **vertical**
   (ou seja, ande para trás 5 posições). Têm de existir entre 2 a 4 casas deste
   tipo no tabuleiro, aleatoriamente colocadas.
