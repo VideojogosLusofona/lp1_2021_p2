@@ -10,16 +10,16 @@ qualquer tipo de inteligência artificial.
 
 O jogo **Snakes & Ladders** é um jogo simples que depende exclusivamente dos
 dados. O jogo consiste numa "corrida" onde o objetivo é ser o primeiro a chegar
-à ultima casa do tabuleiro. A implementação será uma variação deste
+à ultima casa do tabuleiro. O projeto a implementar será uma variação deste
 jogo.
 
 ![Possível tabuleiro inicial](img/SnakesBoard.png "Tabuleiro de Jogo")
 
-**Nesta versão** o tabuleiro consiste numa sequencia de 25 "casas" de vários 
-tipos, que podem afetar a posição do jogador no tabuleiro (ver secção [Tipos de
-Casas](#tipos-de-casas)). O movimento consiste avançar o "pião" (que representa
-cada jogador) o número de casas equivalente ao que foi obtido no lançamento dos
-dados.
+**Na versão a implementar** o tabuleiro consiste numa sequencia de 25 "casas"
+de vários tipos, que podem afetar a posição do jogador no tabuleiro (ver secção
+[Tipos de Casas](#tipos-de-casas)). O movimento consiste avançar o "pião" (que
+representa cada jogador) o número de casas equivalente ao que foi obtido no
+lançamento dos dados.
 
 ![Como se avança no tabuleiro](img/SnakesMovement.png "Tabuleiro de Jogo")
 
@@ -27,10 +27,10 @@ dados.
 
 Nesta implementação do **Snakes and Ladders** o jogo irá começar sempre com um
 tabuleiro aleatório onde o posicionamento dos diferentes tipos de casas irá
-seguir uma heurística específica definido em baixo.
+seguir uma regra específica definido em baixo.
 
-O tabuleiro é uma matriz de 5x5 (i.e 5 casas por linha e coluna), onde cada
-jogador percorre uma linha até ao fim, para chegar a coluna seguinte (ou seja
+O tabuleiro é uma matriz de 5 x 5 (i.e. 5 casas por linha e coluna), onde cada
+jogador percorre uma linha até ao fim, para chegar à linha seguinte (ou seja
 uma progressão horizontal).
 
 ### Regras de Jogo
@@ -38,48 +38,48 @@ uma progressão horizontal).
 O jogo é jogado com 2 a 4 jogadores.
 
 A cada turno um jogador lança um dado de 6 lados, e avança o número de casas
-equivalente ao valor obtido. Se o jogador cai numa **casa especial**, a regra associada
-a essa casa é ativada imediatamente. Após o efeito da casa especial ter sido aplicada,
-a vez de jogar é passada para o jogador seguinte.
+equivalente ao valor obtido. Se o jogador cair numa **casa especial**, a regra associada
+a essa casa é ativada imediatamente. Após o efeito da casa especial ter sido aplicado,
+a vez de jogar é passada ao jogador seguinte.
 
 ### Casos Especiais
 
-* Se o jogador calha numa casa onde já existir outro jogador, o oponente é forçado a
-retroceder uma casa. Caso essa casa é especial, aplica-se na mesma a regra dessa casa
+* Se o jogador calhar numa casa onde já está outro jogador, o oponente é forçado a
+retroceder uma casa. Caso essa casa seja especial, aplica-se na mesma a regra dessa casa
 de forma normal.
 
-* Caso o jogador ultrapassar o número necessário para chegar a ultima casa (e ganhar
-o jogo), este terá que retroceder o número de casas equivalente a diferença entre o
-número que saiu nos dados e o valor exato necessário.
-  * Ex: Falta duas casas para o João ganhar. Lançou 5 no dado, este irá retroceder
-  3 (5-2) casas contando a partir da ultima casa do tabuleiro.
+* Caso o jogador ultrapasse o número necessário para chegar à última casa, terá de
+  retroceder o número de casas equivalente ao valor que saiu a mais nos dados.
+  * Por exemplo: faltam 2 casas para o João ganhar. Se tiver 5 no dado que lançou,
+    irá retroceder 3 (5-2) casas, contando a partir da ultima casa do tabuleiro.
 
 ## Tipos de Casas
 
-Existem 8 tipos de casas differentes aos quais têm heuristicas especificas de como
+Existem 8 tipos de casas diferentes aos quais têm regras especificas de como
 podem ser posicionadas no tabuleiro (i.e. seguir estas regras para a criação do
 tabuleiro).
 
 * **Normal** - Casa normal sem regras especiais.
-* **Snakes** - Esta casa faz com que o jogador retroceda immediatamente para uma casa
-que esteja no minímo a uma linha abaixo da casa corrente. Só pode existir no máximo
-4 casas deste tipo e no minimo 2 num tabuleiro.
-* **Ladders** - Esta casa faz com que o jogador avance immediatemente para uma casa
-que esteja no minímo a uma linha acima da casa corrente. Só pode existir no máximo
-4 casas deste tipo e no minimo 2 num tabuleiro.
-* **Cobra** - Esta casa obriga o jogador a voltar ao início do tabuleiro. Só pode
-existir máximo 1 casa deste tipo e este não pode estar nas duas primeiras linhas inicias.
-* **Boost** - Esta casa obriga o jogador a avançar duas casas. Só pode existir máximo 
-2 casas deste tipo no tabuleiro, e esta não pode existir na ultima linha.
-* **U-Turn** - Esta casa obriga o jogador a retroceder duas casas. Só pode existir
-máximo 2 casas deste tipo no tabuleiro, e esta não pode existir na primeira linha.
-* **Extra Die** - Esta casa oferece um dado extra ao jogador, dado a possibilidade
-de usá-la a qualquer altura do jogo. Só pode existir máximo 1 casa deste tipo.
-**Importante**: Um jogador nunca pode ter mais do que 1 dado extra de reserva.
-* **Cheat Die** - Esta casa oferece um dado "especial" dando a possibilidade de substituir 
-um valor de um dado por um escolhido pelo jogador (valores de 1 a 6). Só pode existir no 
-máximo 1 casa deste tipo no tabuleiro. **Importante**: O jogador perde imediatamente esta 
-opção depois de a utilizar. 
+* **Snakes** - Esta casa faz com que o jogador retroceda imediatamente para uma casa
+  que esteja no mínimo a uma linha abaixo da casa corrente. Têm de existir entre 2 a 4
+  casas deste tipo no tabuleiro.
+* **Ladders** - Esta casa faz com que o jogador avance imediatamente para uma casa
+  que esteja no mínimo a uma linha acima da casa corrente. Têm de existir entre 2 a 4
+  casas deste tipo no tabuleiro.
+* **Cobra** - Esta casa obriga o jogador a voltar ao início do tabuleiro. Tem de
+  existir apenas 1 casa deste tipo, e a mesma não pode estar nas duas primeiras
+  linhas.
+* **Boost** - Esta casa obriga o jogador a avançar duas casas. Podem existir no
+  máximo 2 casas deste tipo no tabuleiro, e não podem ser colocadas na última linha.
+* **U-Turn** - Esta casa obriga o jogador a retroceder duas casas.  Podem existir no
+  máximo 2 casas deste tipo no tabuleiro, e não podem ser colocadas na primeira linha.
+* **Extra Die** - Esta casa oferece um dado extra ao jogador, que pode fazer uso
+  do mesmo em qualquer altura do jogo. Só pode existir no máximo 1 casa deste tipo.
+  **Importante**: Um jogador nunca pode ter mais do que 1 dado extra de reserva.
+* **Cheat Die** - Esta casa oferece um dado "especial", dando a possibilidade de
+  substituir um valor de um dado por um escolhido pelo jogador (valores de 1 a 6).
+  Só pode existir no máximo 1 casa deste tipo no tabuleiro.
+  **Importante**: O jogador perde imediatamente esta opção depois de a utilizar.
 
 ## Visualização
 
@@ -87,7 +87,7 @@ Toda a parte visual é feita na consola, e a cada turno é necessário mostrar o
 do tabuleiro aos jogadores, mostrando a posição corrente de todos os jogadores, as
 casas especiais e os dados extra e cheat-die que o jogador tenha.
 
-# Funcionamento da Aplicação
+## Funcionamento da Aplicação
 
 O funcionamento exato da aplicação é da responsabilidade de cada grupo. No
 entanto, quando a aplicação começa, **deve ser claro como cada jogador joga**,
@@ -110,14 +110,14 @@ documentação:
 
 ![The current operating system is not Windows.](img/notsupported.png "The current operating system is not Windows.")
 
-### Organização do código e estrutura de classes
+### Organização e estrutura do código
 
-O projeto deve estar devidamente organizado, fazendo uso de classes, _structs_
-e enumerações. Cada classe, _struct_ ou enumeração deve ser colocada num
-ficheiro com o mesmo nome. Por exemplo, uma classe chamada `Piece` deve ser
-colocada no ficheiro `Piece.cs`. A estrutura de classes deve ser bem pensada e
-organizada de uma forma lógica, e [cada classe deve ter uma responsabilidade
-específica e bem definida][SRP].
+O projeto deve estar devidamente organizado em métodos / funções e fazer uso de
+enumerações. Os mais avançados, podem fazer uso de classes e _structs_, mas tal
+não é obrigatório para este projeto. Cada classe, _struct_ ou enumeração deve
+ser colocada num ficheiro com o mesmo nome. Por exemplo, uma enumeração chamada
+`HouseType` deve ser colocada no ficheiro `HouseType.cs`. A estrutura do código
+deve ser bem pensada e organizada de uma forma lógica.
 
 ## Objetivos e critério de avaliação
 
@@ -126,16 +126,14 @@ Este projeto tem os seguintes objetivos:
 * **O1** - Programa deve funcionar como especificado e deve ter em conta as
   regras básicas do _game design_.
 * **O2** - Projeto e código bem organizados, nomeadamente:
-  * Estrutura de classes bem pensada (ver secção [Organização do código e
-    estrutura de classes](#organizacao-do-codigo-e-estrutura-de-classes)).
+  * Estrutura de classes bem pensada (ver secção [Organização e estrutura do
+    código](#organização-e-estrutura-do-código)).
   * Código devidamente comentado e indentado.
   * Inexistência de código "morto", que não faz nada, como por exemplo
     variáveis, propriedades ou métodos nunca usados.
   * Projeto compila e executa sem erros e/ou *warnings*.
 * **O3** - Projeto adequadamente documentado com [comentários de documentação
-  XML][XML]. A documentação gerada em formato HTML em [Doxygen] ou [DocFX],
-  deve estar incluída no `zip` do projeto, mas **não** integrada no repositório
-  Git.
+  XML][XML].
 * **O4** - Repositório Git deve refletir boa utilização do mesmo, nomeadamente:
   * Devem existir *commits* de todos os elementos do grupo, _commits_ esses
     com mensagens que sigam as melhores práticas para o efeito (como indicado
@@ -148,8 +146,8 @@ Este projeto tem os seguintes objetivos:
     do Visual Studio (na pasta `.vs` ou `.vscode`), não devem estar no
     repositório. Ou seja, devem ser ignorados ao nível do ficheiro
     `.gitignore`.
-  * *Assets* binários necessários, como é o caso da imagem do diagrama UML,
-    devem ser integrados no repositório em modo Git LFS.
+  * *Assets* binários necessários, como é o caso da imagem do fluxograma, devem
+    ser integrados no repositório em modo Git LFS.
 * **O5** - Relatório em formato [Markdown] (ficheiro `README.md`),
   organizado da seguinte forma:
   * Título do projeto.
@@ -164,8 +162,7 @@ Este projeto tem os seguintes objetivos:
     * Descrição da solução, com breve explicação de como o código foi
       organizado, bem como dos algoritmos não triviais que tenham sido
       implementados.
-    * Um diagrama UML de classes simples (i.e., sem indicação dos
-      membros da classe) descrevendo a estrutura de classes.
+    * Um fluxograma, indicando a sequência lógica de passos efetuados no código.
   * Referências, incluindo trocas de ideias com colegas, código aberto
     reutilizado (e.g., do StackOverflow) e bibliotecas de terceiros
     utilizadas. Devem ser o mais detalhados possível.
@@ -174,7 +171,7 @@ Este projeto tem os seguintes objetivos:
     Atenção aos erros ortográficos e à correta formatação [Markdown], pois
     ambos serão tidos em conta na nota final.
 
-O projeto tem um peso de 5 valores na nota final da disciplina e será avaliado
+O projeto tem um peso de 4 valores na nota final da disciplina e será avaliado
 de forma qualitativa. Isto significa que todos os objetivos têm de ser
 parcialmente ou totalmente cumpridos. A cada objetivo, O1 a O5, será atribuída
 uma nota entre 0 e 1. A nota do projeto será dada pela seguinte fórmula:
@@ -184,40 +181,37 @@ uma nota entre 0 e 1. A nota do projeto será dada pela seguinte fórmula:
 Em que *D* corresponde à nota da discussão e percentagem equitativa de
 realização do projeto, também entre 0 e 1. Isto significa que se os alunos
 ignorarem completamente um dos objetivos, não tenham feito nada no projeto ou
-não comparerecem na discussão, a nota final será zero.
+não comparecerem na discussão, a nota final será zero.
 
-# Entrega
+## Entrega
 
 O projeto deve ser entregue por **grupos de 2 a 3 alunos** via Moodle até às
 **23h de 1 de Abril de 2022**. Um (e apenas um) dos elementos do grupo deve ser
 submeter um ficheiro `zip` com a solução completa, nomeadamente:
 
 * Pasta escondida `.git` com o repositório Git local do projeto.
-* Documentação HTML gerada com [Doxygen] ou [DocFX]. Esta documentação
-  **não** deve ser incluída no repositório Git, pelo que a respetiva pasta deve
-  estar explicitamente ignorada a nível do ficheiro `.gitignore`.
 * Ficheiro da solução (`.sln`).
 * Pasta do projeto, contendo os ficheiros `.cs` e o ficheiro do projeto
   (`.csproj`).
 * Ficheiro `README.md` contendo o relatório do projeto em formato [Markdown].
-* Ficheiro de imagem contendo o diagrama UML. Este ficheiro deve ser incluído
+* Ficheiro de imagem contendo o fluxograma. Este ficheiro deve ser incluído
   no repositório em modo Git LFS.
-* Outros ficheiros de configuração, como por exemplo `.gitignore`,
-  `.gitattributes`, `Doxyfile` ou `docfx.json`.
+* Outros ficheiros de configuração, como por exemplo `.gitignore` e
+  `.gitattributes`.
 
 Não serão avaliados projetos sem estes elementos e que não sejam entregues
 através do Moodle.
 
-# Honestidade académica
+## Honestidade académica
 
 Nesta disciplina, espera-se que cada aluno siga os mais altos padrões de
 honestidade académica. Isto significa que cada ideia que não seja do
-aluno deve ser claramente indicada, com devida referência ao respectivo
+aluno deve ser claramente indicada, com devida referência ao respetivo
 autor. O não cumprimento desta regra constitui plágio.
 
 O plágio inclui a utilização de ideias, código ou conjuntos de soluções
 de outros alunos ou indivíduos, ou quaisquer outras fontes para além
-dos textos de apoio à disciplina, sem dar o respectivo crédito a essas
+dos textos de apoio à disciplina, sem dar o respetivo crédito a essas
 fontes. Os alunos são encorajados a discutir os problemas com outros
 alunos e devem mencionar essa discussão quando submetem os projetos.
 Essa menção **não** influenciará a nota. Os alunos não deverão, no
