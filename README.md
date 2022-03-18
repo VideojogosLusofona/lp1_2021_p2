@@ -27,68 +27,88 @@ lançamento dos dados.
 
 Nesta implementação do **Snakes and Ladders** o jogo irá começar sempre com um
 tabuleiro aleatório onde o posicionamento dos diferentes tipos de casas irá
-seguir uma regra específica definido em baixo.
+seguir uma regra específica definida em baixo.
 
 O tabuleiro é uma matriz de 5 x 5 (i.e. 5 casas por linha e coluna), onde cada
 jogador percorre uma linha até ao fim, para chegar à linha seguinte (ou seja
 uma progressão horizontal).
 
-### Regras de Jogo
+### Jogadores e Avanços no Tabuleiro
 
-O jogo é jogado com 2 a 4 jogadores.
+O jogo é jogado com 2 jogadores.
 
 A cada turno um jogador lança um dado de 6 lados, e avança o número de casas
-equivalente ao valor obtido. Se o jogador cair numa **casa especial**, a regra associada
-a essa casa é ativada imediatamente. Após o efeito da casa especial ter sido aplicado,
-a vez de jogar é passada ao jogador seguinte.
+equivalente ao valor obtido. Se o jogador cair numa **casa especial**, a regra
+associada a essa casa é ativada imediatamente. Se a casa especial obrigar o
+jogador a mover-se para outra casa especial, aplica-se novamente a regra
+associada à nova casa, e por ai fora, até que o jogador calhe numa casa normal.
+Assim que o jogador cair numa casa normal, será a vez de jogar do próximo jogador.
 
 ### Casos Especiais
 
 * Se o jogador calhar numa casa onde já está outro jogador, o oponente é forçado a
-retroceder uma casa. Caso essa casa seja especial, aplica-se na mesma a regra dessa casa
-de forma normal.
+retroceder uma casa. Caso se trate de uma casa especial, aplica-se a respetiva regra
+ao jogador oponente.
 
 * Caso o jogador ultrapasse o número necessário para chegar à última casa, terá de
   retroceder o número de casas equivalente ao valor que saiu a mais nos dados.
   * Por exemplo: faltam 2 casas para o João ganhar. Se tiver 5 no dado que lançou,
     irá retroceder 3 (5-2) casas, contando a partir da ultima casa do tabuleiro.
 
-## Tipos de Casas
+### Tipos de Casas
 
-Existem 8 tipos de casas diferentes aos quais têm regras especificas de como
-podem ser posicionadas no tabuleiro (i.e. seguir estas regras para a criação do
-tabuleiro).
+Existem 8 tipos de casas diferentes, as quais têm regras especificas de como
+podem ser colocadas no tabuleiro:
 
 * **Normal** - Casa normal sem regras especiais.
-* **Snakes** - Esta casa faz com que o jogador retroceda imediatamente para uma casa
-  que esteja no mínimo a uma linha abaixo da casa corrente. Têm de existir entre 2 a 4
-  casas deste tipo no tabuleiro.
-* **Ladders** - Esta casa faz com que o jogador avance imediatamente para uma casa
-  que esteja no mínimo a uma linha acima da casa corrente. Têm de existir entre 2 a 4
-  casas deste tipo no tabuleiro.
+* **Snakes** - Esta casa faz com que o jogador retroceda uma casa na **vertical**
+  (ou seja, ande para trás 5 posições). Têm de existir entre 2 a 4 casas deste
+  tipo no tabuleiro, aleatoriamente colocadas.
+* **Ladders** - Esta casa faz com que o jogador avance uma casa na **vertical**
+  (ou seja, ande para a frente 5 posições). Têm de existir entre 2 a 4 casas
+  deste tipo no tabuleiro, aleatoriamente colocadas.
 * **Cobra** - Esta casa obriga o jogador a voltar ao início do tabuleiro. Tem de
-  existir apenas 1 casa deste tipo, e a mesma não pode estar nas duas primeiras
-  linhas.
-* **Boost** - Esta casa obriga o jogador a avançar duas casas. Podem existir no
-  máximo 2 casas deste tipo no tabuleiro, e não podem ser colocadas na última linha.
-* **U-Turn** - Esta casa obriga o jogador a retroceder duas casas.  Podem existir no
-  máximo 2 casas deste tipo no tabuleiro, e não podem ser colocadas na primeira linha.
+  existir apenas 1 casa deste tipo no tabuleiro, aleatoriamente colocada, embora
+  não possa ser colocada nas duas primeiras linhas (i.e., as duas linhas de baixo).
+* **Boost** - Esta casa obriga o jogador a avançar duas casas. Podem existir
+  entre 0 a 2 casas deste tipo no tabuleiro, aleatoriamente colocadas, embora não
+  possam ser colocadas na última linha (i.e., na linha de cima).
+* **U-Turn** - Esta casa obriga o jogador a retroceder duas casas. Podem existir
+  entre 0 a 2 casas deste tipo no tabuleiro, aleatoriamente colocadas, embora não
+  possam ser colocadas na primeira linha (i.e., na linha de baixo).
 * **Extra Die** - Esta casa oferece um dado extra ao jogador, que pode fazer uso
-  do mesmo em qualquer altura do jogo. Só pode existir no máximo 1 casa deste tipo.
+  do mesmo em qualquer altura do jogo, antes de lançar o(s) dado(s). Tem de
+  existir uma casa deste tipo, aleatoriamente colocada.
   **Importante**: Um jogador nunca pode ter mais do que 1 dado extra de reserva.
+  Caso caia novamente na casa _Extra Die_ e ainda não tenha usado o seu dado
+  extra, a casa comporta-se como uma casa normal.
 * **Cheat Die** - Esta casa oferece um dado "especial", dando a possibilidade de
   substituir um valor de um dado por um escolhido pelo jogador (valores de 1 a 6).
-  Só pode existir no máximo 1 casa deste tipo no tabuleiro.
-  **Importante**: O jogador perde imediatamente esta opção depois de a utilizar.
+  A pergunta é feita após o jogador ter lançado o dado normalmente, e caso não
+  goste do valor que calhou, pode então optar por usar o dado especial.
+  Têm de existir 1 casa deste tipo no tabuleiro.
+  **Importante**: (1) O jogador perde imediatamente esta opção depois de a
+  utilizar. (2) esta opção não pode ser usada ao mesmo tempo que o _extra Die_
+  (ou seja, caso o jogador tenha usado um _extra die_ antes da jogada, não
+  terá a oportunidade de usar o _cheat die_ nessa mesma jogada).
 
-## Visualização
+Cada posição do tabuleiro só pode ter no máximo uma casa especial.
+
+### Visualização
 
 Toda a parte visual é feita na consola, e a cada turno é necessário mostrar o estado
-do tabuleiro aos jogadores, mostrando a posição corrente de todos os jogadores, as
-casas especiais e os dados extra e _cheat-die_ que o jogador tenha.
+do tabuleiro aos jogadores, indicando a posição corrente dos jogadores, as casas
+especiais e os dados _extra_ e _cheat_ que o jogador tenha.
 
 É essencial que a visualização tenha uma legenda que indique o significado das casas
 e peças no tabuleiro.
+
+Para ser fácil perceber o que acontece numa dada jogada, deve ser impressa uma
+descrição da última jogada efetuada, por exemplo:
+
+```
+Player 1: die = 4; advanced 4 positions to a U-Turn special location; moved back 2 positions to a normal location; player 2 was there and was moved back 1 position to a normal location.
+```
 
 Podem e devem fazer uso de cores e carateres unicode para melhorar e clarificar o
 aspeto visual do jogo.
@@ -98,8 +118,11 @@ aspeto visual do jogo.
 O funcionamento exato da aplicação é da responsabilidade de cada grupo. No
 entanto, quando a aplicação começa, **deve ser claro como cada jogador joga**,
 ou seja, o jogo deve ter instruções muito claras sobre que teclas fazem o quê.
-Por outras palavras, os grupos devem ter em conta as regras importantes do
-_game design_, pois serão tidas em conta na avaliação do projeto.
+A legenda com indicação do significado das casas e das peças no tabuleiro é
+essencial. Por outras palavras, os grupos devem ter em conta as regras importantes
+do _game design_, pois serão tidas em conta na avaliação do projeto. **Sugerimos
+fortemente que em primeiro lugar implementem o jogo em papel / fisicamente, de
+modo a entenderem as regras, e só depois comecem a programar.**
 
 A aplicação deve funcionar em Windows, macOS e Linux. A melhor estratégia para
 garantir que assim seja é testar o jogo em Linux (e.g., numa máquina virtual).
@@ -119,18 +142,32 @@ documentação:
 ### Organização e estrutura do código
 
 O projeto deve estar devidamente organizado em métodos / funções e fazer uso de
-enumerações. Os mais avançados, podem fazer uso de classes e _structs_, mas tal
-não é obrigatório para este projeto. Cada classe, _struct_ ou enumeração deve
+enumerações. Os aluno mais avançados podem fazer uso de classes e _structs_, mas
+tal não é obrigatório para este projeto. Cada classe, _struct_ ou enumeração deve
 ser colocada num ficheiro com o mesmo nome. Por exemplo, uma enumeração chamada
-`HouseType` deve ser colocada no ficheiro `HouseType.cs`. A estrutura do código
-deve ser bem pensada e organizada de uma forma lógica.
+`LocationType` deve ser colocada no ficheiro `LocationType.cs`. A estrutura do
+código deve ser bem pensada e organizada de uma forma lógica. Por exemplo, deve
+ser muito simples alterar o código para que o tabuleiro tenha outras dimensões,
+e que possa ter mais ou menos casas especiais.
 
 ## Objetivos e critério de avaliação
 
 Este projeto tem os seguintes objetivos:
 
 * **O1** - Programa deve funcionar como especificado e deve ter em conta as
-  regras básicas do _game design_.
+  regras básicas do _game design_. Podem ir adicionando funcionalidades como
+  indicado de seguida, e a nota final de 4 valores está limitada da seguinte forma
+  (considerando que os objetivos O2 a O5 sejam cumpridos):
+  * Máximo de **2.0 valores**: apenas implementaram casas normais (neste caso
+    o jogo é um simples jogo de corrida com dados).
+  * Máximo de **2.4 valores**: apenas implementaram as casas especiais _Snakes_
+    e _Ladders_.
+  * Máximo de **2.6 valores**: implementaram também a casa especial _Cobra_.
+  * Máximo de **2.8 valores**: implementaram também a casa especial _Boost_.
+  * Máximo de **3.0 valores**: implementaram também a casa especial _U-Turn_.
+  * Máximo de **3.5 valores**: implementaram também a casa especial _Extra Die_.
+  * Máximo de **4 valores**: Funcionamento total, com todas as regras especiais
+    implementadas, incluindo o _Cheat Die_.
 * **O2** - Projeto e código bem organizados, nomeadamente:
   * Estrutura de classes bem pensada (ver secção [Organização e estrutura do
     código](#organização-e-estrutura-do-código)).
