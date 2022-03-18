@@ -17,8 +17,8 @@ jogo.
 
 **Na versão a implementar** o tabuleiro consiste numa sequencia de 25 "casas"
 de vários tipos, que podem afetar a posição do jogador no tabuleiro (ver secção
-[Tipos de Casas](#tipos-de-casas)). O movimento consiste avançar o "pião" (que
-representa cada jogador) o número de casas equivalente ao que foi obtido no
+[Tipos de Casas](#tipos-de-casas)). O movimento consiste avançar a peça que
+representa cada jogador o número de casas equivalente ao que foi obtido no
 lançamento dos dados.
 
 ![Como se avança no tabuleiro](img/SnakesMovement.png "Tabuleiro de Jogo")
@@ -85,7 +85,13 @@ tabuleiro).
 
 Toda a parte visual é feita na consola, e a cada turno é necessário mostrar o estado
 do tabuleiro aos jogadores, mostrando a posição corrente de todos os jogadores, as
-casas especiais e os dados extra e cheat-die que o jogador tenha.
+casas especiais e os dados extra e _cheat-die_ que o jogador tenha.
+
+É essencial que a visualização tenha uma legenda que indique o significado das casas
+e peças no tabuleiro.
+
+Podem e devem fazer uso de cores e carateres unicode para melhorar e clarificar o
+aspeto visual do jogo.
 
 ## Funcionamento da Aplicação
 
