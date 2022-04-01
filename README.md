@@ -64,10 +64,12 @@ podem ser colocadas no tabuleiro:
   casa do tabuleiro têm que ser obrigatoriamente normais.
 * **Snakes** - Esta casa faz com que o jogador retroceda uma casa na **vertical**
   (para baixo). Têm de existir entre 2 a 4 casas deste tipo no tabuleiro,
-  aleatoriamente colocadas.
+  aleatoriamente colocadas. Estas casas não podem existir na primeira linha
+  (linha de baixo).
 * **Ladders** - Esta casa faz com que o jogador avance uma casa na **vertical**
   (para cima). Têm de existir entre 2 a 4 casas deste tipo no tabuleiro,
-  aleatoriamente colocadas.
+  aleatoriamente colocadas. Estas casas não podem existir na última linha (linha
+  de cima).
 * **Cobra** - Esta casa obriga o jogador a voltar ao início do tabuleiro. Tem de
   existir apenas 1 casa deste tipo no tabuleiro, aleatoriamente colocada, embora
   não possa ser colocada nas duas primeiras linhas (i.e., as duas linhas de baixo).
