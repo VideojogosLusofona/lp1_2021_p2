@@ -222,7 +222,7 @@ de forma qualitativa. Isto significa que todos os objetivos têm de ser
 parcialmente ou totalmente cumpridos. A cada objetivo, O1 a O5, será atribuída
 uma nota entre 0 e 1. A nota do projeto será dada pela seguinte fórmula:
 
-*N = 5 x O1 x O2 x O3 x O4 x O5 x D*
+*N = 4 x O1 x O2 x O3 x O4 x O5 x D*
 
 Em que *D* corresponde à nota da discussão e percentagem equitativa de
 realização do projeto, também entre 0 e 1. Isto significa que se os alunos
