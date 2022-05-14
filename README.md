@@ -1,4 +1,4 @@
-# Projeto 1 de Linguagens de Programação | 2021/2022
+# Projeto 2 de Linguagens de Programação | 2021/2022
 
 ## Introdução
 
@@ -8,141 +8,29 @@ qualquer tipo de inteligência artificial.
 
 ## Regras do Jogo
 
-O jogo **Snakes & Ladders** é um jogo simples que depende exclusivamente dos
-dados. O jogo consiste numa "corrida" onde o objetivo é ser o primeiro a chegar
-à ultima casa do tabuleiro. O projeto a implementar será uma variação deste
-jogo.
+Iguais às especificadas no enunciado do [Projeto 1].
 
-![Possível tabuleiro inicial](img/SnakesBoard.png "Tabuleiro de Jogo")
+## Visualização
 
-**Na versão a implementar** o tabuleiro consiste numa sequencia de 25 "casas"
-de vários tipos, que podem afetar a posição do jogador no tabuleiro (ver secção
-[Tipos de Casas](#tipos-de-casas)). O movimento consiste avançar a peça que
-representa cada jogador o número de casas equivalente ao que foi obtido no
-lançamento dos dados.
-
-![Como se avança no tabuleiro](img/SnakesMovement.png "Tabuleiro de Jogo")
-
-### Mecânicas do Tabuleiro
-
-Nesta implementação do **Snakes and Ladders** o jogo irá começar sempre com um
-tabuleiro aleatório onde o posicionamento dos diferentes tipos de casas irá
-seguir uma regra específica definida em baixo.
-
-O tabuleiro é uma matriz de 5 x 5 (i.e. 5 casas por linha e coluna), onde cada
-jogador percorre uma linha até ao fim, para chegar à linha seguinte (ou seja
-uma progressão horizontal).
-
-### Jogadores e Avanços no Tabuleiro
-
-O jogo é jogado com 2 jogadores.
-
-A cada turno um jogador lança um dado de 6 lados, e avança o número de casas
-equivalente ao valor obtido. Se o jogador cair numa **casa especial**, a regra
-associada a essa casa é ativada imediatamente. Se a casa especial obrigar o
-jogador a mover-se para outra casa especial, aplica-se novamente a regra
-associada à nova casa, e por ai fora, até que o jogador calhe numa casa normal.
-Assim que o jogador cair numa casa normal, será a vez de jogar do próximo jogador.
-
-### Casos Especiais
-
-* Se o jogador calhar numa casa onde já está outro jogador, o oponente é forçado a
-retroceder uma casa. Caso se trate de uma casa especial, aplica-se a respetiva regra
-ao jogador oponente.
-
-* Caso o jogador ultrapasse o número necessário para chegar à última casa, terá de
-  retroceder o número de casas equivalente ao valor que saiu a mais nos dados.
-  * Por exemplo: faltam 2 casas para o João ganhar. Se tiver 5 no dado que lançou,
-    irá retroceder 3 (5-2) casas, contando a partir da ultima casa do tabuleiro.
-
-### Tipos de Casas
-
-Existem 8 tipos de casas diferentes, as quais têm regras especificas de como
-podem ser colocadas no tabuleiro:
-
-* **Normal** - Casa normal sem regras especiais. A **primeira** e a **última**
-  casa do tabuleiro têm que ser obrigatoriamente normais.
-* **Snakes** - Esta casa faz com que o jogador retroceda uma casa na **vertical**
-  (para baixo). Têm de existir entre 2 a 4 casas deste tipo no tabuleiro,
-  aleatoriamente colocadas. Estas casas não podem existir na primeira linha
-  (linha de baixo).
-* **Ladders** - Esta casa faz com que o jogador avance uma casa na **vertical**
-  (para cima). Têm de existir entre 2 a 4 casas deste tipo no tabuleiro,
-  aleatoriamente colocadas. Estas casas não podem existir na última linha (linha
-  de cima).
-* **Cobra** - Esta casa obriga o jogador a voltar ao início do tabuleiro. Tem de
-  existir apenas 1 casa deste tipo no tabuleiro, aleatoriamente colocada, embora
-  não possa ser colocada nas duas primeiras linhas (i.e., as duas linhas de baixo).
-* **Boost** - Esta casa obriga o jogador a avançar duas casas. Podem existir
-  entre 0 a 2 casas deste tipo no tabuleiro, aleatoriamente colocadas, embora não
-  possam ser colocadas na última linha (i.e., na linha de cima).
-* **U-Turn** - Esta casa obriga o jogador a retroceder duas casas. Podem existir
-  entre 0 a 2 casas deste tipo no tabuleiro, aleatoriamente colocadas, embora não
-  possam ser colocadas na primeira linha (i.e., na linha de baixo).
-* **Extra Die** - Esta casa oferece um dado extra ao jogador, que pode fazer uso
-  do mesmo em qualquer altura do jogo, antes de lançar o(s) dado(s). Tem de
-  existir uma casa deste tipo, aleatoriamente colocada.
-  **Importante**: Um jogador nunca pode ter mais do que 1 dado extra de reserva.
-  Caso caia novamente na casa _Extra Die_ e ainda não tenha usado o seu dado
-  extra, a casa comporta-se como uma casa normal.
-* **Cheat Die** - Esta casa oferece um dado "especial", dando a possibilidade de
-  substituir um valor de um dado por um escolhido pelo jogador (valores de 1 a 6).
-  A pergunta é feita após o jogador ter lançado o dado normalmente, e caso não
-  goste do valor que calhou, pode então optar por usar o dado especial.
-  Têm de existir 1 casa deste tipo no tabuleiro.
-  **Importante**: (1) O jogador perde imediatamente esta opção depois de a
-  utilizar. (2) esta opção não pode ser usada ao mesmo tempo que o _extra Die_
-  (ou seja, caso o jogador tenha usado um _extra die_ antes da jogada, não
-  terá a oportunidade de usar o _cheat die_ nessa mesma jogada).
-
-Cada posição do tabuleiro só pode ter no máximo uma casa especial.
-
-### Visualização
-
-Toda a parte visual é feita na consola, e a cada turno é necessário mostrar o estado
-do tabuleiro aos jogadores, indicando a posição corrente dos jogadores, as casas
-especiais e os dados _extra_ e _cheat_ que o jogador tenha.
-
-É essencial que a visualização tenha uma legenda que indique o significado das casas
-e peças no tabuleiro.
-
-Para ser fácil perceber o que acontece numa dada jogada, deve ser impressa uma
-descrição da última jogada efetuada, por exemplo:
-
-```
-Player 1: die = 4; advanced 4 positions to a U-Turn special location; moved back 2 positions to a normal location; player 2 was there and was moved back 1 position to a normal location.
-```
-
-Podem e devem fazer uso de cores e carateres unicode para melhorar e clarificar o
-aspeto visual do jogo.
+Igual ao especificado no enunciado do [Projeto 1].
 
 ## Funcionamento da Aplicação
 
-O funcionamento exato da aplicação é da responsabilidade de cada grupo. No
-entanto, quando a aplicação começa, **deve ser claro como cada jogador joga**,
-ou seja, o jogo deve ter instruções muito claras sobre que teclas fazem o quê.
-A legenda com indicação do significado das casas e das peças no tabuleiro é
-essencial. Por outras palavras, os grupos devem ter em conta as regras importantes
-do _game design_, pois serão tidas em conta na avaliação do projeto. **Sugerimos
-fortemente que em primeiro lugar implementem o jogo em papel / fisicamente, de
-modo a entenderem as regras, e só depois comecem a programar.**
+Igual ao especificado no enunciado do [Projeto 1], com os seguintes requisitos
+obrigatórios:
 
-A aplicação deve funcionar em Windows, macOS e Linux. A melhor estratégia para
-garantir que assim seja é testar o jogo em Linux (e.g., numa máquina virtual).
-Algumas instruções incompatíveis com macOS e Linux são, por exemplo:
-
-* [Console.Beep()](https://docs.microsoft.com/dotnet/api/system.console.beep)
-* [Console.SetBufferSize()](https://docs.microsoft.com/dotnet/api/system.console.setbuffersize)
-* [Console.SetWindowPosition()](https://docs.microsoft.com/dotnet/api/system.console.setwindowposition)
-* [Console.SetWindowSize()](https://docs.microsoft.com/dotnet/api/system.console.setwindowsize)
-* Entre outras.
-
-As instruções que só funcionam em Windows têm a seguinte indicação na sua
-documentação:
-
-![The current operating system is not Windows.](img/notsupported.png "The current operating system is not Windows.")
+* Ao contrário do [Projeto 1], todas as funcionalidades devem ser implementadas
+  (casas especiais, funcionalidades extra, etc).
+* **Anti-Infinite Mechanism**: a geração de tabuleiro tem de evitar ciclos
+  infinitos, como por exemplo a existência uma casa _Ladders_ diretamente abaixo
+  de uma casa _Snakes_.
+* **Save game**: deve ser possível guardar o estado do jogo para um ficheiro.
+* **Load game**: deve ser possível carregar um jogo previamente guardado num
+  ficheiro.
 
 ### Organização e estrutura do código
+
+* TO DO
 
 O projeto deve estar devidamente organizado em métodos / funções e fazer uso de
 enumerações. Os aluno mais avançados podem fazer uso de classes e _structs_, mas
@@ -304,3 +192,4 @@ Estruturas de Dados][aed] do [Instituto Superior Técnico][ist]*
 [XML]:https://docs.microsoft.com/dotnet/csharp/codedoc
 [SRP]:https://en.wikipedia.org/wiki/Single_responsibility_principle
 [2º projeto de LP1 2018/19]:https://github.com/VideojogosLusofona/lp1_2018_p2_solucao
+[Projeto 1]:https://github.com/VideojogosLusofona/lp1_2021_p1
