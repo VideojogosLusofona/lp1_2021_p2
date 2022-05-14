@@ -28,7 +28,7 @@ obrigatórios:
 * **Load game**: deve ser possível carregar um jogo previamente guardado num
   ficheiro.
 
-### Organização e estrutura do código
+## Organização e estrutura do código
 
 * TO DO
 
@@ -46,19 +46,7 @@ e que possa ter mais ou menos casas especiais.
 Este projeto tem os seguintes objetivos:
 
 * **O1** - Programa deve funcionar como especificado e deve ter em conta as
-  regras básicas do _game design_. Podem ir adicionando funcionalidades como
-  indicado de seguida, e a nota final de 4 valores está limitada da seguinte forma
-  (considerando que os objetivos O2 a O5 sejam cumpridos):
-  * Máximo de **2.0 valores**: apenas implementaram casas normais (neste caso
-    o jogo é um simples jogo de corrida com dados).
-  * Máximo de **2.4 valores**: apenas implementaram as casas especiais _Snakes_
-    e _Ladders_.
-  * Máximo de **2.6 valores**: implementaram também a casa especial _Cobra_.
-  * Máximo de **2.8 valores**: implementaram também a casa especial _Boost_.
-  * Máximo de **3.0 valores**: implementaram também a casa especial _U-Turn_.
-  * Máximo de **3.5 valores**: implementaram também a casa especial _Extra Die_.
-  * Máximo de **4 valores**: Funcionamento total, com todas as regras especiais
-    implementadas, incluindo o _Cheat Die_.
+  regras básicas do _game design_.
 * **O2** - Projeto e código bem organizados, nomeadamente:
   * Estrutura de classes bem pensada (ver secção [Organização e estrutura do
     código](#organização-e-estrutura-do-código)).
@@ -80,8 +68,8 @@ Este projeto tem os seguintes objetivos:
     do Visual Studio (na pasta `.vs` ou `.vscode`), não devem estar no
     repositório. Ou seja, devem ser ignorados ao nível do ficheiro
     `.gitignore`.
-  * *Assets* binários necessários, como é o caso da imagem do fluxograma, devem
-    ser integrados no repositório em modo Git LFS.
+  * *Assets* binários necessários, como é o caso do diagrama UML, devem ser
+    integrados no repositório em modo Git LFS.
 * **O5** - Relatório em formato [Markdown] (ficheiro `README.md`),
   organizado da seguinte forma:
   * Título do projeto.
@@ -96,7 +84,8 @@ Este projeto tem os seguintes objetivos:
     * Descrição da solução, com breve explicação de como o código foi
       organizado, bem como dos algoritmos não triviais que tenham sido
       implementados.
-    * Um fluxograma, indicando a sequência lógica de passos efetuados no código.
+    * Um diagrama UML **simples**, indicando de forma geral como as classes
+      foram organizadas.
   * Referências, incluindo trocas de ideias com colegas, código aberto
     reutilizado (e.g., do StackOverflow) e bibliotecas de terceiros
     utilizadas. Devem ser o mais detalhados possível.
@@ -120,7 +109,7 @@ não comparecerem na discussão, a nota final será zero.
 ## Entrega
 
 O projeto deve ser entregue por **grupos de 2 a 3 alunos** via Moodle até às
-**23h de 3 de Abril de 2022**. Um (e apenas um) dos elementos do grupo deve ser
+**23h de 29 de maio de 2022**. Um (e apenas um) dos elementos do grupo deve ser
 submeter um ficheiro `zip` com a solução completa, nomeadamente:
 
 * Pasta escondida `.git` com o repositório Git local do projeto.
@@ -128,7 +117,7 @@ submeter um ficheiro `zip` com a solução completa, nomeadamente:
 * Pasta do projeto, contendo os ficheiros `.cs` e o ficheiro do projeto
   (`.csproj`).
 * Ficheiro `README.md` contendo o relatório do projeto em formato [Markdown].
-* Ficheiro de imagem contendo o fluxograma. Este ficheiro deve ser incluído
+* Ficheiro de imagem contendo o diagrama UML. Este ficheiro deve ser incluído
   no repositório em modo Git LFS.
 * Outros ficheiros de configuração, como por exemplo `.gitignore` e
   `.gitattributes`.
