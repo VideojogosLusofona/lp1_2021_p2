@@ -17,7 +17,7 @@ Igual ao especificado no enunciado do [Projeto 1].
 ## Funcionamento da Aplicação
 
 Igual ao especificado no enunciado do [Projeto 1], com os seguintes requisitos
-obrigatórios:
+adicionais obrigatórios:
 
 * Ao contrário do [Projeto 1], todas as funcionalidades devem ser implementadas
   (casas especiais, funcionalidades extra, etc).
@@ -30,16 +30,22 @@ obrigatórios:
 
 ## Organização e estrutura do código
 
-* TO DO
+O código deve estar obrigatoriamente implementado da seguinte forma:
 
-O projeto deve estar devidamente organizado em métodos / funções e fazer uso de
-enumerações. Os aluno mais avançados podem fazer uso de classes e _structs_, mas
-tal não é obrigatório para este projeto. Cada classe, _struct_ ou enumeração deve
-ser colocada num ficheiro com o mesmo nome. Por exemplo, uma enumeração chamada
-`LocationType` deve ser colocada no ficheiro `LocationType.cs`. A estrutura do
-código deve ser bem pensada e organizada de uma forma lógica. Por exemplo, deve
-ser muito simples alterar o código para que o tabuleiro tenha outras dimensões,
-e que possa ter mais ou menos casas especiais.
+* O projeto deve ser implementado usando programação por objetos. Mais
+  especificamente:
+  * Cada tipo (classe, _struct_, interface ou `enum`) deve representar um
+    conceito do jogo e/ou da aplicação.
+  * Cada tipo (classe, etc) deve ter apenas uma responsabilidade bem definida,
+    seguindo o [_single responsibility principle_][SRP].
+  * O uso de herança e interfaces será **muito** valorizado neste projeto, mas
+    apenas se o seu uso fizer sentido no contexto em que é utilizado. O **não
+    uso** de herança e interfaces será penalizado.
+* O código deve seguir uma estrutura _Model-View-Controller_ (MVC), tal como
+  discutido na semana 11 de aulas.
+* Cada classe, _struct_, interface ou enumeração deve ser colocada num ficheiro
+  com o mesmo nome. Por exemplo, uma classe chamada `Location` deve ser colocada
+  no ficheiro `Location.cs`.
 
 ## Objetivos e critério de avaliação
 
@@ -48,8 +54,8 @@ Este projeto tem os seguintes objetivos:
 * **O1** - Programa deve funcionar como especificado e deve ter em conta as
   regras básicas do _game design_.
 * **O2** - Projeto e código bem organizados, nomeadamente:
-  * Estrutura de classes bem pensada (ver secção [Organização e estrutura do
-    código](#organização-e-estrutura-do-código)).
+  * Código organizado segundo o indicado na secção [Organização e estrutura do
+    código](#organização-e-estrutura-do-código).
   * Código devidamente comentado e indentado.
   * Inexistência de código "morto", que não faz nada, como por exemplo
     variáveis, propriedades ou métodos nunca usados.
